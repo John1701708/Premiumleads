@@ -1,0 +1,769 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium USA Leads Marketplace | BPO Data Solutions</title>
+    <meta name="description" content="Premium USA call center leads for Energy, Home Warranty, Solar, Medicare, and more. Fresh, aged, and verified leads delivered via email.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0a0a0f',
+                            800: '#12121a',
+                            700: '#1a1a25',
+                            600: '#252536',
+                        },
+                        accent: {
+                            green: '#10b981',
+                            glow: '#34d399',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0f;
+            color: #e2e8f0;
+        }
+        .glass-card {
+            background: rgba(26, 26, 37, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-bg {
+            background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15), transparent 70%),
+                        radial-gradient(ellipse at bottom right, rgba(99, 102, 241, 0.1), transparent 50%);
+        }
+        .grid-pattern {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .state-card {
+            transition: all 0.3s ease;
+        }
+        .state-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.5);
+        }
+        .form-input:focus {
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+        }
+        .success-message {
+            display: none;
+        }
+        .success-message.show {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark-900/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-white tracking-tight">Premium<span class="text-emerald-400">Leads</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#featured" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">Featured</a>
+                    <a href="#categories" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">Categories</a>
+                    <a href="#states" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">States</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full text-sm font-medium transition-all hover:shadow-lg hover:shadow-emerald-500/25">Request Quote</a>
+                </div>
+                <button class="md:hidden text-gray-300 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-white/5">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#featured" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">Featured</a>
+                <a href="#categories" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">Categories</a>
+                <a href="#states" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">States</a>
+                <a href="#contact" class="block px-3 py-2 text-emerald-400 font-medium">Request Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center hero-bg grid-pattern pt-20">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-8 animate-float">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+                Trusted by 500+ BPO Partners
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Premium USA <br>
+                <span class="text-gradient">Call Center Leads</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                High-converting, verified leads for Energy, Home Warranty, Solar, and Medicare campaigns. 
+                Fresh and aged data delivered instantly to your inbox.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-semibold text-lg transition-all hover:shadow-xl hover:shadow-emerald-500/25 hover:-translate-y-1">
+                    Get Started
+                </a>
+                <a href="#featured" class="px-8 py-4 bg-dark-700 hover:bg-dark-600 text-white rounded-full font-semibold text-lg transition-all border border-white/10 hover:border-emerald-500/50">
+                    View Lead Types
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-1">50M+</div>
+                    <div class="text-sm text-gray-500">Leads Delivered</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-1">98%</div>
+                    <div class="text-sm text-gray-500">Accuracy Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-1">24h</div>
+                    <div class="text-sm text-gray-500">Delivery Time</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-1">8</div>
+                    <div class="text-sm text-gray-500">Target States</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Leads Section -->
+    <section id="featured" class="py-24 bg-dark-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Lead Categories</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our most popular and high-converting lead types for call center campaigns</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Energy Leads -->
+                <div class="group relative overflow-hidden rounded-2xl glass-card p-8 hover:border-emerald-500/30 transition-all duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Energy Leads</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">High-intent residential and commercial energy prospects actively seeking rate comparisons and supplier switches. Includes electric and gas utility customers.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-emerald-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Residential & Commercial
+                            </li>
+                            <li class="flex items-center text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-emerald-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Real-time switch intent data
+                            </li>
+                        </ul>
+                        <button onclick="selectLeadType('Energy')" class="text-emerald-400 font-semibold hover:text-emerald-300 transition-colors flex items-center">
+                            Request Quote
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Home Warranty Leads -->
+                <div class="group relative overflow-hidden rounded-2xl glass-card p-8 hover:border-emerald-500/30 transition-all duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Home Warranty Leads</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Homeowners seeking protection plans for appliances and systems. High conversion rates with detailed property and ownership information included.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-emerald-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Homeowner verified data
+                            </li>
+                            <li class="flex items-center text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-emerald-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Property age & value filters
+                            </li>
+                        </ul>
+                        <button onclick="selectLeadType('Home Warranty')" class="text-emerald-400 font-semibold hover:text-emerald-300 transition-colors flex items-center">
+                            Request Quote
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Categories Grid -->
+    <section id="categories" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Additional Lead Categories</h2>
+                <p class="text-gray-400">Expand your campaign reach with our diverse lead portfolio</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Solar Leads -->
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer" onclick="selectLeadType('Solar')">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Solar Leads</h3>
+                    <p class="text-gray-400 text-sm">Homeowners interested in solar panel installation and energy savings programs.</p>
+                </div>
+
+                <!-- Medicare Leads -->
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer" onclick="selectLeadType('Medicare')">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Medicare Leads</h3>
+                    <p class="text-gray-400 text-sm">Seniors 65+ seeking Medicare Advantage, Supplement, and Part D plans.</p>
+                </div>
+
+                <!-- Auto Insurance Leads -->
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer" onclick="selectLeadType('Auto Insurance')">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Auto Insurance Leads</h3>
+                    <p class="text-gray-400 text-sm">Drivers actively shopping for auto insurance quotes and policy switches.</p>
+                </div>
+
+                <!-- Mortgage Leads -->
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer" onclick="selectLeadType('Mortgage')">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Mortgage Leads</h3>
+                    <p class="text-gray-400 text-sm">Homeowners seeking refinancing, new purchases, and reverse mortgages.</p>
+                </div>
+
+                <!-- Business Owners Data -->
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer md:col-span-2 lg:col-span-2" onclick="selectLeadType('Business Owners')">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-2">Business Owners Data</h3>
+                            <p class="text-gray-400 text-sm">Comprehensive B2B database including SMB owners, decision makers, and company contact information across all industries. Perfect for commercial campaigns and B2B outreach.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Types Explanation -->
+    <section class="py-24 bg-dark-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-dark-900 to-transparent opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Lead Types We Provide</h2>
+                <p class="text-gray-400">Choose the right data age and verification level for your campaign</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div class="relative glass-card rounded-2xl p-8 h-full border-t-4 border-emerald-500">
+                        <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Fresh Leads</h3>
+                        <p class="text-gray-400 mb-4">Real-time data collected within 24-48 hours. Highest conversion potential for active campaigns.</p>
+                        <div class="flex items-center text-emerald-400 text-sm font-medium">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+                            Real-time delivery
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div class="relative glass-card rounded-2xl p-8 h-full border-t-4 border-blue-500">
+                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Aged Leads</h3>
+                        <p class="text-gray-400 mb-4">Cost-effective data from 30-90 days ago. Ideal for volume campaigns and follow-up strategies.</p>
+                        <div class="flex items-center text-blue-400 text-sm font-medium">
+                            <span class="w-2 h-2 rounded-full bg-blue-400 mr-2"></span>
+                            Budget friendly
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div class="relative glass-card rounded-2xl p-8 h-full border-t-4 border-purple-500">
+                        <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Verified Leads</h3>
+                        <p class="text-gray-400 mb-4">Triple-verified data with confirmed contact information and intent validation. Premium quality.</p>
+                        <div class="flex items-center text-purple-400 text-sm font-medium">
+                            <span class="w-2 h-2 rounded-full bg-purple-400 mr-2"></span>
+                            98% accuracy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Available States -->
+    <section id="states" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Available States</h2>
+                <p class="text-gray-400">Premium coverage in high-value markets</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="state-card glass-card rounded-xl p-6 text-center border border-white/5">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">PA</div>
+                    <div class="text-sm text-gray-400">Pennsylvania</div>
+                </div>
+                <div class="state-card glass-card rounded-xl p-6 text-center border border-white/5">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">NJ</div>
+                    <div class="text-sm text-gray-400">New Jersey</div>
+                </div>
+                <div class="state-card glass-card rounded-xl p-6 text-center border border-white/5">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">CA</div>
+                    <div class="text-sm text-gray-400">California</div>
+                </div>
+                <div class="state-card glass-card rounded-xl p-6 text-center border border-white/5">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">MI</div>
+                    <div class="text-sm text-gray-400">Michigan</div>
+                </div>
+                <div class="state-card glass-card rounded-xl p-6 text-center border border-white/5">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">OH</div>
+                    <div class="text-sm text-gray-400">Ohio</div>
+                </div>
+                <div class="state-card glass-card rounded-xl p-6 text-center border border-white/5">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">DE</div>
+                    <div class="text-sm text-gray-400">Delaware</div>
+                </div>
+                <div class="state-card glass-card rounded-xl p-6 text-center border border-white/5">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">NY</div>
+                    <div class="text-sm text-gray-400">New York</div>
+                </div>
+                <div class="state-card glass-card rounded-xl p-6 text-center border border-white/5">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">IL</div>
+                    <div class="text-sm text-gray-400">Illinois</div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-500 text-sm">Additional states available upon request for bulk orders</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Info -->
+    <section class="py-24 bg-dark-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 md:p-12 border border-emerald-500/20 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                <div class="relative grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Email Delivery Only</h2>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            After order confirmation, your data is securely packaged and delivered directly to your inbox. 
+                            Fast, secure, and compatible with all major CRM and dialer systems.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                Excel/CSV format included
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                                Secure encrypted delivery
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                Delivery within 24 hours
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-2xl blur opacity-20"></div>
+                        <div class="relative glass-card rounded-2xl p-8 border border-white/10">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-white font-semibold">Order Confirmed</div>
+                                        <div class="text-gray-500 text-sm">Just now</div>
+                                    </div>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-medium">Active</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
+                                    <div class="h-full bg-emerald-500 w-3/4 rounded-full"></div>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-400">Preparing data...</span>
+                                    <span class="text-emerald-400">75%</span>
+                                </div>
+                            </div>
+                            <div class="mt-6 pt-6 border-t border-white/5">
+                                <div class="flex items-center text-gray-400 text-sm">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    Estimated delivery: 2 hours
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Contact Form -->
+    <section id="contact" class="py-24 bg-dark-900 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Request a Quote</h2>
+                <p class="text-gray-400 mb-2">Pricing varies based on lead type, state, quantity, and verification level</p>
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mt-4">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Contact us for custom pricing
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-8 md:p-12 border border-white/5">
+                <form id="leadForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+                            <input type="text" name="name" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="John Smith">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Company Name *</label>
+                            <input type="text" name="company" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="Your Company LLC">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                        <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="john@company.com">
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Lead Category *</label>
+                            <select name="lead_category" id="leadCategory" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                                <option value="">Select Category</option>
+                                <option value="Energy">Energy Leads</option>
+                                <option value="Home Warranty">Home Warranty Leads</option>
+                                <option value="Solar">Solar Leads</option>
+                                <option value="Medicare">Medicare Leads</option>
+                                <option value="Auto Insurance">Auto Insurance Leads</option>
+                                <option value="Mortgage">Mortgage Leads</option>
+                                <option value="Business Owners">Business Owners Data</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Target State *</label>
+                            <select name="state" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                                <option value="">Select State</option>
+                                <option value="PA">Pennsylvania (PA)</option>
+                                <option value="NJ">New Jersey (NJ)</option>
+                                <option value="CA">California (CA)</option>
+                                <option value="MI">Michigan (MI)</option>
+                                <option value="OH">Ohio (OH)</option>
+                                <option value="DE">Delaware (DE)</option>
+                                <option value="NY">New York (NY)</option>
+                                <option value="IL">Illinois (IL)</option>
+                                <option value="Other">Other (Specify in message)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Lead Type *</label>
+                            <select name="lead_type" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                                <option value="">Select Type</option>
+                                <option value="Fresh">Fresh Leads</option>
+                                <option value="Aged">Aged Leads</option>
+                                <option value="Verified">Verified Leads</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Quantity Needed *</label>
+                            <input type="text" name="quantity" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="e.g., 5,000 leads">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                        <textarea name="message" rows="4" class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors resize-none" placeholder="Tell us about your campaign requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-semibold text-lg transition-all hover:shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center space-x-2">
+                        <span>Submit Request</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message text-center py-12">
+                    <div class="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Thank You!</h3>
+                    <p class="text-gray-400">Your request has been received. We will contact you by email shortly.</p>
+                    <button onclick="resetForm()" class="mt-6 text-emerald-400 hover:text-emerald-300 font-medium">Submit another request</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold text-white">Premium<span class="text-emerald-400">Leads</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-sm">
+                        Premium USA call center leads for BPOs and marketing agencies. 
+                        High-quality data, verified contacts, and reliable delivery.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Lead Categories</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Energy Leads</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Home Warranty</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Solar Leads</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Medicare Leads</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>Email delivery only</li>
+                        <li>24-48 hour response</li>
+                        <li>Secure data handling</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 text-sm">&copy; 2024 Premium USA Leads Marketplace. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-600 hover:text-emerald-400 text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-600 hover:text-emerald-400 text-sm transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('https://formspree.io/f/mgvnbbaw', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    document.getElementById('leadForm').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('show');
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                alert('There was an error submitting your request. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+        });
+        
+        function resetForm() {
+            document.getElementById('leadForm').reset();
+            document.getElementById('leadForm').style.display = 'block';
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').innerHTML = '<span>Submit Request</span><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+        }
+        
+        // Auto-select lead type from cards
+        function selectLeadType(type) {
+            document.getElementById('leadCategory').value = type;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('leadCategory').focus();
+        }
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards
+        document.querySelectorAll('.glass-card').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+```
