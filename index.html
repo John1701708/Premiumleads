@@ -83,15 +83,23 @@
             box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2);
             border-color: rgba(16, 185, 129, 0.5);
         }
-        .form-input:focus {
-            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+        .email-card {
+            transition: all 0.3s ease;
         }
-        .success-message {
-            display: none;
+        .email-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.4);
         }
-        .success-message.show {
-            display: block;
-            animation: slideUp 0.5s ease-out;
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+        .copy-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+        }
+        .copy-btn.copied {
+            background: rgba(16, 185, 129, 0.3);
+            color: #34d399;
         }
     </style>
 </head>
@@ -113,7 +121,7 @@
                     <a href="#featured" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">Featured</a>
                     <a href="#categories" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">Categories</a>
                     <a href="#states" class="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">States</a>
-                    <a href="#contact" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full text-sm font-medium transition-all hover:shadow-lg hover:shadow-emerald-500/25">Request Quote</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full text-sm font-medium transition-all hover:shadow-lg hover:shadow-emerald-500/25">Contact Us</a>
                 </div>
                 <button class="md:hidden text-gray-300 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +136,7 @@
                 <a href="#featured" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">Featured</a>
                 <a href="#categories" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">Categories</a>
                 <a href="#states" class="block px-3 py-2 text-gray-300 hover:text-emerald-400">States</a>
-                <a href="#contact" class="block px-3 py-2 text-emerald-400 font-medium">Request Quote</a>
+                <a href="#contact" class="block px-3 py-2 text-emerald-400 font-medium">Contact Us</a>
             </div>
         </div>
     </nav>
@@ -218,12 +226,12 @@
                                 Real-time switch intent data
                             </li>
                         </ul>
-                        <button onclick="selectLeadType('Energy')" class="text-emerald-400 font-semibold hover:text-emerald-300 transition-colors flex items-center">
+                        <a href="#contact" class="text-emerald-400 font-semibold hover:text-emerald-300 transition-colors flex items-center">
                             Request Quote
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                             </svg>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -252,12 +260,12 @@
                                 Property age & value filters
                             </li>
                         </ul>
-                        <button onclick="selectLeadType('Home Warranty')" class="text-emerald-400 font-semibold hover:text-emerald-300 transition-colors flex items-center">
+                        <a href="#contact" class="text-emerald-400 font-semibold hover:text-emerald-300 transition-colors flex items-center">
                             Request Quote
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                             </svg>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -274,7 +282,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Solar Leads -->
-                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer" onclick="selectLeadType('Solar')">
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer">
                     <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
@@ -285,7 +293,7 @@
                 </div>
 
                 <!-- Medicare Leads -->
-                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer" onclick="selectLeadType('Medicare')">
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer">
                     <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
@@ -296,7 +304,7 @@
                 </div>
 
                 <!-- Auto Insurance Leads -->
-                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer" onclick="selectLeadType('Auto Insurance')">
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer">
                     <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
@@ -307,7 +315,7 @@
                 </div>
 
                 <!-- Mortgage Leads -->
-                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer" onclick="selectLeadType('Mortgage')">
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer">
                     <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
@@ -318,7 +326,7 @@
                 </div>
 
                 <!-- Business Owners Data -->
-                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer md:col-span-2 lg:col-span-2" onclick="selectLeadType('Business Owners')">
+                <div class="glass-card rounded-xl p-6 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer md:col-span-2 lg:col-span-2">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -522,108 +530,123 @@
         </div>
     </section>
 
-    <!-- Pricing & Contact Form -->
+    <!-- Contact Section - Email Only -->
     <section id="contact" class="py-24 bg-dark-900 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Request a Quote</h2>
-                <p class="text-gray-400 mb-2">Pricing varies based on lead type, state, quantity, and verification level</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Contact Us to Purchase Data</h2>
+                <p class="text-gray-400 mb-2">Send us an email with your requirements and we will get back to you within 24 hours</p>
                 <div class="inline-flex items-center px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mt-4">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
-                    Contact us for custom pricing
+                    Email Delivery Only
                 </div>
             </div>
 
-            <div class="glass-card rounded-2xl p-8 md:p-12 border border-white/5">
-                <form id="leadForm" class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
-                            <input type="text" name="name" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="John Smith">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Company Name *</label>
-                            <input type="text" name="company" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="Your Company LLC">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
-                        <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="john@company.com">
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Lead Category *</label>
-                            <select name="lead_category" id="leadCategory" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white focus:outline-none focus:border-emerald-500 transition-colors">
-                                <option value="">Select Category</option>
-                                <option value="Energy">Energy Leads</option>
-                                <option value="Home Warranty">Home Warranty Leads</option>
-                                <option value="Solar">Solar Leads</option>
-                                <option value="Medicare">Medicare Leads</option>
-                                <option value="Auto Insurance">Auto Insurance Leads</option>
-                                <option value="Mortgage">Mortgage Leads</option>
-                                <option value="Business Owners">Business Owners Data</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Target State *</label>
-                            <select name="state" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white focus:outline-none focus:border-emerald-500 transition-colors">
-                                <option value="">Select State</option>
-                                <option value="PA">Pennsylvania (PA)</option>
-                                <option value="NJ">New Jersey (NJ)</option>
-                                <option value="CA">California (CA)</option>
-                                <option value="MI">Michigan (MI)</option>
-                                <option value="OH">Ohio (OH)</option>
-                                <option value="DE">Delaware (DE)</option>
-                                <option value="NY">New York (NY)</option>
-                                <option value="IL">Illinois (IL)</option>
-                                <option value="Other">Other (Specify in message)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Lead Type *</label>
-                            <select name="lead_type" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white focus:outline-none focus:border-emerald-500 transition-colors">
-                                <option value="">Select Type</option>
-                                <option value="Fresh">Fresh Leads</option>
-                                <option value="Aged">Aged Leads</option>
-                                <option value="Verified">Verified Leads</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Quantity Needed *</label>
-                            <input type="text" name="quantity" required class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="e.g., 5,000 leads">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
-                        <textarea name="message" rows="4" class="form-input w-full px-4 py-3 rounded-lg bg-dark-800 border border-dark-600 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-colors resize-none" placeholder="Tell us about your campaign requirements..."></textarea>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-semibold text-lg transition-all hover:shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center space-x-2">
-                        <span>Submit Request</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </button>
-                </form>
-
-                <!-- Success Message -->
-                <div id="successMessage" class="success-message text-center py-12">
-                    <div class="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
+            <!-- Email Contact Card -->
+            <div class="glass-card rounded-2xl p-8 md:p-12 border border-emerald-500/20 relative overflow-hidden mb-12">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                
+                <div class="relative text-center">
+                    <div class="w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-6">
                         <svg class="w-10 h-10 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Thank You!</h3>
-                    <p class="text-gray-400">Your request has been received. We will contact you by email shortly.</p>
-                    <button onclick="resetForm()" class="mt-6 text-emerald-400 hover:text-emerald-300 font-medium">Submit another request</button>
+                    
+                    <h3 class="text-2xl font-bold text-white mb-2">Email Us Directly</h3>
+                    <p class="text-gray-400 mb-6">Click the button below to send us an email with your data requirements</p>
+                    
+                    <!-- Email Display -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                        <div class="email-card glass-card rounded-xl px-6 py-4 border border-white/10 flex items-center gap-3">
+                            <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+                            </svg>
+                            <span id="emailText" class="text-white font-mono text-lg">sales.premiumleadshub@proton.me</span>
+                        </div>
+                        <button onclick="copyEmail()" id="copyBtn" class="copy-btn px-4 py-3 rounded-xl border border-white/10 text-gray-300 hover:text-white flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                            <span id="copyBtnText">Copy</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Send Email Button -->
+                    <a href="mailto:sales.premiumleadshub@proton.me?subject=Data%20Purchase%20Inquiry%20-%20Premium%20Leads&body=Hello%2C%0A%0AI%20am%20interested%20in%20purchasing%20leads%20from%20Premium%20Leads%20Hub.%20Please%20find%20my%20requirements%20below%3A%0A%0A1.%20Lead%20Category%3A%20(e.g.%20Energy%2C%20Home%20Warranty%2C%20Solar%2C%20Medicare%2C%20Auto%20Insurance%2C%20Mortgage%2C%20Business%20Owners)%0A%0A2.%20Lead%20Type%3A%20(Fresh%20%2F%20Aged%20%2F%20Verified)%0A%0A3.%20Target%20State%3A%20(e.g.%20PA%2C%20NJ%2C%20CA%2C%20MI%2C%20OH%2C%20DE%2C%20NY%2C%20IL)%0A%0A4.%20Quantity%20Needed%3A%20(e.g.%205%2C000%20leads)%0A%0A5.%20Additional%20Requirements%3A%0A%0A%0AThank%20you!" 
+                       class="inline-flex items-center px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-semibold text-lg transition-all hover:shadow-xl hover:shadow-emerald-500/25 hover:-translate-y-1">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                        Send Email Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- What to Include in Your Email -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="email-card glass-card rounded-xl p-6 border border-white/5 text-center">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-white font-semibold mb-2">Lead Category</h4>
+                    <p class="text-gray-400 text-sm">Energy, Solar, Medicare, Home Warranty, Auto Insurance, Mortgage, or Business Owners</p>
+                </div>
+
+                <div class="email-card glass-card rounded-xl p-6 border border-white/5 text-center">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-white font-semibold mb-2">Lead Type</h4>
+                    <p class="text-gray-400 text-sm">Fresh (24-48h), Aged (30-90 days), or Verified (Triple-checked)</p>
+                </div>
+
+                <div class="email-card glass-card rounded-xl p-6 border border-white/5 text-center">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-white font-semibold mb-2">Target State</h4>
+                    <p class="text-gray-400 text-sm">PA, NJ, CA, MI, OH, DE, NY, IL or specify other states</p>
+                </div>
+
+                <div class="email-card glass-card rounded-xl p-6 border border-white/5 text-center">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-white font-semibold mb-2">Quantity</h4>
+                    <p class="text-gray-400 text-sm">How many leads you need (e.g. 1,000, 5,000, 10,000+)</p>
+                </div>
+            </div>
+
+            <!-- Sample Email Template -->
+            <div class="mt-12 glass-card rounded-2xl p-8 border border-white/5">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <svg class="w-5 h-5 text-emerald-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    Sample Email Format
+                </h3>
+                <div class="bg-dark-800 rounded-xl p-6 border border-dark-600 font-mono text-sm text-gray-300 leading-relaxed">
+                    <p class="text-emerald-400 mb-2">Subject: Data Purchase Inquiry - Premium Leads</p>
+                    <p class="mb-1">Hello,</p>
+                    <p class="mb-3">I am interested in purchasing leads from Premium Leads Hub. Please find my requirements below:</p>
+                    <p class="mb-1"><span class="text-emerald-400">1. Lead Category:</span> Energy Leads</p>
+                    <p class="mb-1"><span class="text-emerald-400">2. Lead Type:</span> Fresh Leads</p>
+                    <p class="mb-1"><span class="text-emerald-400">3. Target State:</span> Pennsylvania (PA)</p>
+                    <p class="mb-1"><span class="text-emerald-400">4. Quantity Needed:</span> 5,000 leads</p>
+                    <p class="mb-1"><span class="text-emerald-400">5. Additional Requirements:</span> Residential only, electric utility customers</p>
+                    <p class="mt-3">Thank you!</p>
                 </div>
             </div>
         </div>
@@ -650,22 +673,20 @@
                 <div>
                     <h4 class="text-white font-semibold mb-4">Lead Categories</h4>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Energy Leads</a></li>
-                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Home Warranty</a></li>
-                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Solar Leads</a></li>
-                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Medicare Leads</a></li>
+                        <li><a href="#featured" class="hover:text-emerald-400 transition-colors">Energy Leads</a></li>
+                        <li><a href="#featured" class="hover:text-emerald-400 transition-colors">Home Warranty</a></li>
+                        <li><a href="#categories" class="hover:text-emerald-400 transition-colors">Solar Leads</a></li>
+                        <li><a href="#categories" class="hover:text-emerald-400 transition-colors">Medicare Leads</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li>
-                            <a href="mailto:sales.premiumleadshub@proton.me" class="hover:text-emerald-400 transition-colors flex items-center gap-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                </svg>
-                                sales.premiumleadshub@proton.me
-                            </a>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            sales.premiumleadshub@proton.me
                         </li>
                         <li>Email delivery only</li>
                         <li>24-48 hour response</li>
@@ -684,54 +705,19 @@
     </footer>
 
     <script>
-        // Form submission handling
-        document.getElementById('leadForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.innerHTML;
-            
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
-            
-            const formData = new FormData(this);
-            
-            try {
-                const response = await fetch('https://formspree.io/f/xldrqydl', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    document.getElementById('leadForm').style.display = 'none';
-                    document.getElementById('successMessage').classList.add('show');
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                alert('There was an error submitting your request. Please try again.');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-            }
-        });
-        
-        function resetForm() {
-            document.getElementById('leadForm').reset();
-            document.getElementById('leadForm').style.display = 'block';
-            document.getElementById('successMessage').classList.remove('show');
-            document.getElementById('submitBtn').disabled = false;
-            document.getElementById('submitBtn').innerHTML = '<span>Submit Request</span><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
-        }
-        
-        // Auto-select lead type from cards
-        function selectLeadType(type) {
-            document.getElementById('leadCategory').value = type;
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-            document.getElementById('leadCategory').focus();
+        // Copy email to clipboard
+        function copyEmail() {
+            const email = 'sales.premiumleadshub@proton.me';
+            navigator.clipboard.writeText(email).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const btnText = document.getElementById('copyBtnText');
+                btn.classList.add('copied');
+                btnText.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btnText.textContent = 'Copy';
+                }, 2000);
+            });
         }
         
         // Smooth scroll for navigation links
